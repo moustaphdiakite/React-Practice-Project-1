@@ -1,5 +1,11 @@
+import AddUser from "./components/Users/AddUser";
+
 function App() {
-	return <div>lol</div>;
+	return (
+		<div>
+			<AddUser></AddUser>
+		</div>
+	);
 }
 
 export default App;
