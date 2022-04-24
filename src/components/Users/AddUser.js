@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
+import ErrorModal from "../UI/ErrorModal";
 import classes from "./AddUser.module.css";
 export default function AddUser({ onAddUser }) {
 	const [enteredUsername, setEnteredUsername] = useState("");
@@ -23,26 +24,29 @@ export default function AddUser({ onAddUser }) {
 		setEnteredAge(e.target.value);
 	}
 	return (
-		<Card className={classes.input}>
-			<form onSubmit={addUserhandler}>
-				<label htmlFor="username">Username</label>
-				<input
-					id="username"
-					type="text"
-					onChange={usernameChangeHandler}
-					value={enteredUsername}
-				></input>
-				<label htmlFor="age">Age (Years)</label>
-				<input
-					id="age"
-					type="number"
-					onChange={ageChangeHandler}
-					value={enteredAge}
-				></input>
-				<Button type="submit" onClick={addUserhandler}>
-					Add user
-				</Button>
-			</form>
-		</Card>
+		<div>
+			<ErrorModal></ErrorModal>
+			<Card className={classes.input}>
+				<form onSubmit={addUserhandler}>
+					<label htmlFor="username">Username</label>
+					<input
+						id="username"
+						type="text"
+						onChange={usernameChangeHandler}
+						value={enteredUsername}
+					></input>
+					<label htmlFor="age">Age (Years)</label>
+					<input
+						id="age"
+						type="number"
+						onChange={ageChangeHandler}
+						value={enteredAge}
+					></input>
+					<Button type="submit" onClick={addUserhandler}>
+						Add user
+					</Button>
+				</form>
+			</Card>
+		</div>
 	);
 }
