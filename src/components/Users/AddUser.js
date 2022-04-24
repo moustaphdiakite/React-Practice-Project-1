@@ -7,7 +7,14 @@ export default function AddUser(props) {
 	const [enteredAge, setEnteredAge] = useState("");
 	function addUserhandler(event) {
 		event.preventDefault();
-		console.log(enteredUsername, enteredAge);
+		if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0)
+			return;
+		if (+enteredAge < 1) return;
+		//
+
+		
+		setEnteredUsername("");
+		setEnteredAge("");
 	}
 
 	function usernameChangeHandler(e) {
@@ -24,9 +31,15 @@ export default function AddUser(props) {
 					id="username"
 					type="text"
 					onChange={usernameChangeHandler}
+					value={enteredUsername}
 				></input>
-				<label htmlFor="age">Age</label>
-				<input id="age" type="number" onChange={ageChangeHandler}></input>
+				<label htmlFor="age">Age (Years)</label>
+				<input
+					id="age"
+					type="number"
+					onChange={ageChangeHandler}
+					value={enteredAge}
+				></input>
 				<Button type="submit" onClick={addUserhandler}>
 					Add user
 				</Button>
