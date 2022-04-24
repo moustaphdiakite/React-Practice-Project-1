@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import classes from "./AddUser.module.css";
-export default function AddUser(props) {
+export default function AddUser({ onAddUser }) {
 	const [enteredUsername, setEnteredUsername] = useState("");
 	const [enteredAge, setEnteredAge] = useState("");
 	function addUserhandler(event) {
@@ -11,8 +11,7 @@ export default function AddUser(props) {
 			return;
 		if (+enteredAge < 1) return;
 		//
-
-		
+		onAddUser(enteredUsername, enteredAge);
 		setEnteredUsername("");
 		setEnteredAge("");
 	}
