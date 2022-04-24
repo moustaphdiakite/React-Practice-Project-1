@@ -1,10 +1,10 @@
 import Button from "./Button";
 import Card from "./Card";
 import classes from "./ErrorModal.module.css";
-export default function ErrorModal({ title, message }) {
+export default function ErrorModal({ title, message, onConfirm }) {
 	return (
 		<>
-			<div className={classes.backdrop}></div>
+			<div className={classes.backdrop} onClick={onConfirm}></div>
 			<Card className={classes.modal}>
 				<header className={classes.header}>
 					<h2>{title}</h2>
@@ -13,7 +13,7 @@ export default function ErrorModal({ title, message }) {
 					<p>{message}</p>
 				</div>
 				<footer className={classes.actions}>
-					<Button>Okay</Button>
+					<Button onClick={onConfirm}>Okay</Button>
 				</footer>
 			</Card>
 		</>
